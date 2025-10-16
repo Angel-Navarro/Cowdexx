@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "128462136689",
+    "project_id": "cowdex-36364",
+    "storage_bucket": "cowdex-36364.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128462136689:android:b2eea92502167e160d82d0",
+        "android_client_info": {
+          "package_name": "com.example.cowdex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDstbn6Umnqhv9xpMR2-lao0myTYxHNsQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

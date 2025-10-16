@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white"
+    tools:context=".ui.dialogs.PrivacyPolicyDialog">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aviso de Privacidad"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:background="#F5F5F5"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Este es el aviso de privacidad de la aplicación.\n\n
+Al utilizar esta aplicación, aceptas que:\n\n
+• Recopilamos tu correo electrónico para fines de autenticación.\n
+• Almacenamos tu información de forma segura en Firebase.\n
+• Utilizamos tu correo para recuperación de contraseña.\n
+• Guardamos respaldos de tus datos en la nube.\n
+• No compartimos tu información con terceros.\n\n
+Para más información, visita nuestra política de privacidad completa en [tu_sitio_web]."
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:lineSpacingExtra="4dp"/>
+    </ScrollView>
+
+    <CheckBox
+        android:id="@+id/checkbox_accept_privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="He leído y acepto el aviso de privacidad"
+        android:textSize="14sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btn_accept_privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aceptar y Continuar"
+        android:textColor="@android:color/white"
+        android:background="@color/purple_500"
+        android:padding="12dp"/>
+
+</LinearLayout>

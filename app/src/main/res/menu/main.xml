@@ -6,4 +6,21 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_backup"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="Crear Respaldo"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_restore"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="Restaurar Respaldo"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_logout"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="Cerrar Sesión"
+        app:showAsAction="never" />
 </menu>
