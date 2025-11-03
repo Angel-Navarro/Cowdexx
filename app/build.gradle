@@ -70,4 +70,7 @@ dependencies {
 
     // Firebase Storage
     implementation 'com.google.firebase:firebase-storage'
+
+    //Para borones redondeados
+    implementation 'com.google.android.material:material:1.9.0'
 }

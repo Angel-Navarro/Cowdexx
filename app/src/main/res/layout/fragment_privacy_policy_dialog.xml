@@ -28,14 +28,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Este es el aviso de privacidad de la aplicación.\n\n
-Al utilizar esta aplicación, aceptas que:\n\n
-• Recopilamos tu correo electrónico para fines de autenticación.\n
-• Almacenamos tu información de forma segura en Firebase.\n
-• Utilizamos tu correo para recuperación de contraseña.\n
-• Guardamos respaldos de tus datos en la nube.\n
-• No compartimos tu información con terceros.\n\n
-Para más información, visita nuestra política de privacidad completa en [tu_sitio_web]."
+            android:text="Cowdex, con domicilio en  Cieneguilla La Lumbrera, Aguascalientes, México, es responsable del tratamiento de los datos personales que proporciones, conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.\n\n
+Únicamente se recaba tu correo electrónico con las siguientes finalidades:\n
+• Permitir el inicio de sesión dentro de la aplicación.\n
+• Enviar correos de recuperación de contraseña en caso de olvido.\n
+• Almacenar tu cuenta de manera segura en los servicios de Firebase (Google LLC).\n\n
+No se comparten tus datos con terceros ni se utilizan para fines distintos a los aquí mencionados.\n\n
+La aplicación implementa medidas técnicas, administrativas y físicas necesarias para proteger tu información contra acceso, pérdida o uso no autorizado.\n\n
+Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición (ARCO) enviando un correo a soporte@cowdex.com.\n\n
+Al utilizar esta aplicación, manifiestas que has leído y aceptas el tratamiento de tu correo electrónico conforme a los términos y condiciones del presente aviso de privacidad."
             android:textSize="14sp"
             android:textColor="@android:color/black"
             android:lineSpacingExtra="4dp"/>
