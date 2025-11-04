@@ -1,19 +1,31 @@
 package com.example.cowdex.ui.gallery;
 
+import android.app.Application;
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
+import com.example.cowdex.ui.bdd.entities.Animal;
+import com.example.cowdex.ui.bdd.entities.Categoria;
+import com.example.cowdex.ui.bdd.repository.AnimalRepository;
+import com.example.cowdex.ui.bdd.repository.CategoriaRepository;
+import java.util.List;
 
-public class GalleryViewModel extends ViewModel {
+public class GalleryViewModel extends AndroidViewModel {
 
-    private final MutableLiveData<String> mText;
+    private final AnimalRepository animalRepository;
+    private final CategoriaRepository categoriaRepository;
 
-    public GalleryViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+    public GalleryViewModel(@NonNull Application application) {
+        super(application);
+        animalRepository = new AnimalRepository(application);
+        categoriaRepository = new CategoriaRepository(application);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<Categoria>> getAllCategorias() {
+        return categoriaRepository.getAllCategorias();
+    }
+
+    public void insertAnimal(Animal animal) {
+        animalRepository.insert(animal);
     }
 }

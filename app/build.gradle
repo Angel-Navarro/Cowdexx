@@ -73,4 +73,14 @@ dependencies {
 
     //Para borones redondeados
     implementation 'com.google.android.material:material:1.9.0'
+
+    // Room Database
+    def room_version = "2.6.1"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // Glide para cargar imágenes
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.16.0'
+
 }

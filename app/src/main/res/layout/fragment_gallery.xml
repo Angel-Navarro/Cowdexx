@@ -1,22 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.gallery.GalleryFragment">
+    tools:context=".ui.gallery.GalleryFragment"
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/text_gallery"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="wrap_content">
+
+        <!-- Categoría -->
+        <TextView
+            android:text="Categoría"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/spinnerCategoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- ID del animal -->
+        <EditText
+            android:id="@+id/editTextIdAnimal"
+            android:hint="ID Numérico"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Nombre o Apodo -->
+        <EditText
+            android:id="@+id/editTextNombre"
+            android:hint="Nombre o Apodo"
+            android:inputType="textPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Raza -->
+        <EditText
+            android:id="@+id/editTextRaza"
+            android:hint="Raza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Sexo -->
+        <TextView
+            android:text="Sexo"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Spinner
+            android:id="@+id/spinnerSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Vacunas -->
+        <EditText
+            android:id="@+id/editTextVacunas"
+            android:hint="Vacunas"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Observaciones -->
+        <EditText
+            android:id="@+id/editTextObservaciones"
+            android:hint="Observaciones"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Fecha de nacimiento -->
+        <EditText
+            android:id="@+id/editTextFechaNacimiento"
+            android:hint="Fecha de nacimiento (dd/mm/aaaa)"
+            android:focusable="false"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Botón registrar -->
+        <Button
+            android:id="@+id/buttonRegistrarAnimal"
+            android:text="Registrar Animal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>
