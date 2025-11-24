@@ -16,6 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.cowdex.databinding.FragmentHomeBinding;
 import com.example.cowdex.ui.bdd.entities.Categoria;
 
+//Analytics
+import android.content.SharedPreferences;
+import android.content.Context;
+
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
@@ -27,6 +31,11 @@ public class HomeFragment extends Fragment {
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+
+        //Analytics
+        SharedPreferences prefs = requireContext().getSharedPreferences("AppAnalytics", Context.MODE_PRIVATE);
+        prefs.edit().putInt("home", prefs.getInt("home", 0) + 1).apply();
+
         View root = binding.getRoot();
 
         // Configurar RecyclerView

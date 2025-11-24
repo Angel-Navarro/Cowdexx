@@ -1,10 +1,8 @@
 package com.example.cowdex;
 
 import android.os.Bundle;
-import android.view.View;
 import android.view.Menu;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -18,30 +16,25 @@ import com.example.cowdex.databinding.ActivityMainBinding;
 
 //--
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.analytics.FirebaseAnalytics;  // ← AGREGAR ESTA LÍNEA
 import com.example.cowdex.ui.EmailCheckActivity.EmailCheckActivity;
-//import com.tuapp.activities.EmailCheckActivity;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private FirebaseAuth mAuth;
+    private FirebaseAnalytics mFirebaseAnalytics;  // ← Analytics
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);  // ← Inicializar Analytics
 
         // Verificar si el usuario está autenticado
         if (mAuth.getCurrentUser() == null) {
@@ -51,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
             return;
+        } else {
+            // Usuario autenticado - registrar evento en Analytics
+            Bundle bundle = new Bundle();
+            bundle.putString("user_email", mAuth.getCurrentUser().getEmail());
+            bundle.putString("user_id", mAuth.getCurrentUser().getUid());
+            mFirebaseAnalytics.logEvent("app_opened_authenticated", bundle);
         }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         // Configuración de los destinos de nivel superior
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.home, R.id.nav_gallery, R.id.nav_slideshow, R.id.ubicacion2)
                 .setOpenableLayout(drawer)
                 .build();
 
@@ -84,11 +83,9 @@ public class MainActivity extends AppCompatActivity {
             logout();
             return true;
         } else if (id == R.id.action_backup) {
-            // Aquí puedes llamar al método de respaldo
             performBackup();
             return true;
         } else if (id == R.id.action_restore) {
-            // Aquí puedes llamar al método de restauración
             performRestore();
             return true;
         }
@@ -97,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void logout() {
+        // Registrar evento de logout en Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("user_id", mAuth.getCurrentUser().getUid());
+        mFirebaseAnalytics.logEvent("user_logout", bundle);
+
         mAuth.signOut();
         Intent intent = new Intent(MainActivity.this, EmailCheckActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -105,56 +107,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void performBackup() {
+        // Registrar evento de backup en Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("action", "backup_initiated");
+        mFirebaseAnalytics.logEvent("backup_action", bundle);
+
         // Implementar lógica de respaldo aquí
-        // Ejemplo usando FirestoreHelper:
-        /*
-        FirestoreHelper helper = new FirestoreHelper();
-        File dbFile = getDatabasePath("tu_base_datos.db");
-
-        helper.uploadBackupFile(dbFile, new FirestoreHelper.OnUploadListener() {
-            @Override
-            public void onSuccess(String downloadUrl) {
-                Toast.makeText(MainActivity.this, "Respaldo completado", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onProgress(int progress) {
-                // Actualizar barra de progreso
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
     }
 
     private void performRestore() {
+        // Registrar evento de restore en Analytics
+        Bundle bundle = new Bundle();
+        bundle.putString("action", "restore_initiated");
+        mFirebaseAnalytics.logEvent("restore_action", bundle);
+
         // Implementar lógica de restauración aquí
-        // Ejemplo usando FirestoreHelper:
-        /*
-        FirestoreHelper helper = new FirestoreHelper();
-        File destinationFile = new File(getFilesDir(), "restored_backup.db");
-
-        helper.downloadBackupFile(destinationFile, new FirestoreHelper.OnDownloadListener() {
-            @Override
-            public void onSuccess() {
-                Toast.makeText(MainActivity.this, "Restauración completada", Toast.LENGTH_SHORT).show();
-                // Aquí deberías reemplazar la base de datos actual con el respaldo
-            }
-
-            @Override
-            public void onProgress(int progress) {
-                // Actualizar barra de progreso
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Toast.makeText(MainActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
     }
 
     @Override
@@ -162,10 +129,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+                R.id.home, R.id.nav_gallery, R.id.nav_slideshow, R.id.ubicacion2, R.id.analytics)
                 .setOpenableLayout(drawer)
                 .build();
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
     }
-
 }

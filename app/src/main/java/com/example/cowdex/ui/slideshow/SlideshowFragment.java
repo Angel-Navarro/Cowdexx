@@ -33,19 +33,34 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+//Analytics
+import android.content.SharedPreferences;
+import android.content.Context;
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 public class SlideshowFragment extends Fragment implements AnimalAdapter.OnAnimalClickListener {
 
     private FragmentSlideshowBinding binding;
     private SlideshowViewModel viewModel;
     private AnimalAdapter adapter;
     private List<Categoria> listaCategorias = new ArrayList<>();
+    private FirebaseAnalytics mFirebaseAnalytics;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         viewModel = new ViewModelProvider(this).get(SlideshowViewModel.class);
+
+        // Inicializar Firebase Analytics
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(requireContext());
+
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
+
+        // Analytics - Incrementar contador de visitas
+        SharedPreferences prefs = requireContext().getSharedPreferences("AppAnalytics", Context.MODE_PRIVATE);
+        prefs.edit().putInt("slideshow", prefs.getInt("slideshow", 0) + 1).apply();
+
         View root = binding.getRoot();
 
         // Configurar RecyclerView
@@ -157,11 +172,16 @@ public class SlideshowFragment extends Fragment implements AnimalAdapter.OnAnima
         sexoAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerSexo.setAdapter(sexoAdapter);
 
-        // Configurar spinner de categorías
+        // Configurar spinner de categorías - VERSIÓN COMPATIBLE CON API 23
+        List<String> nombresCategoriasLista = new ArrayList<>();
+        for (Categoria categoria : listaCategorias) {
+            nombresCategoriasLista.add(categoria.getNombre());
+        }
+
         ArrayAdapter<String> categoriaAdapter = new ArrayAdapter<>(
                 requireContext(),
                 android.R.layout.simple_spinner_item,
-                listaCategorias.stream().map(Categoria::getNombre).toArray(String[]::new)
+                nombresCategoriasLista
         );
         categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategoria.setAdapter(categoriaAdapter);
@@ -241,6 +261,13 @@ public class SlideshowFragment extends Fragment implements AnimalAdapter.OnAnima
             animal.setCategoriaId(listaCategorias.get(spinnerCategoria.getSelectedItemPosition()).getId());
 
             viewModel.updateAnimal(animal);
+
+            // Registrar actualización en Analytics
+            Bundle analyticsBundle = new Bundle();
+            analyticsBundle.putString("animal_id", animal.getIdAnimal());
+            analyticsBundle.putString("animal_nombre", animal.getNombre());
+            mFirebaseAnalytics.logEvent("animal_updated", analyticsBundle);
+
             Toast.makeText(getContext(), "Animal actualizado correctamente", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
@@ -254,6 +281,13 @@ public class SlideshowFragment extends Fragment implements AnimalAdapter.OnAnima
                 .setMessage("¿Estás seguro de que deseas eliminar a " + animal.getNombre() + "?")
                 .setPositiveButton("Eliminar", (dialog, which) -> {
                     viewModel.deleteAnimal(animal);
+
+                    // Registrar eliminación en Analytics
+                    Bundle analyticsBundle = new Bundle();
+                    analyticsBundle.putString("animal_id", animal.getIdAnimal());
+                    analyticsBundle.putString("animal_nombre", animal.getNombre());
+                    mFirebaseAnalytics.logEvent("animal_deleted", analyticsBundle);
+
                     Toast.makeText(getContext(), "Animal eliminado", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Cancelar", null)

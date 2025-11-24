@@ -1,4 +1,4 @@
-package com.example.cowdex;
+package com.example.cowdex.ui.ubicacion;
 
 import androidx.lifecycle.ViewModel;
 

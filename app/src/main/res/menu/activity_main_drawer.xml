@@ -5,9 +5,9 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
+            android:id="@+id/home"
             android:icon="@android:drawable/ic_menu_today"
-            android:title="Categorias" />
+            android:title="Home" />
         <item
             android:id="@+id/nav_gallery"
             android:icon="@android:drawable/ic_menu_add"
@@ -16,6 +16,13 @@
             android:id="@+id/nav_slideshow"
             android:icon="@android:drawable/ic_dialog_dialer"
             android:title="Ver animales" />
+        <item
+            android:id="@+id/ubicacion2"
+            android:icon="@android:drawable/ic_menu_mylocation"
+            android:title="Ubicacion (Google maps api)" />
+        <item
+            android:id="@+id/analytics"
+            android:title="Analytics" />
 
     </group>
 </menu>

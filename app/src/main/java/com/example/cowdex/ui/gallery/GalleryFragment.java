@@ -23,6 +23,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+//Analytics
+import android.content.SharedPreferences;
+import android.content.Context;
+
 public class GalleryFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
@@ -35,6 +39,16 @@ public class GalleryFragment extends Fragment {
 
         viewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
+
+
+
+        //Analytics
+        // Al inicio de onCreateView
+        SharedPreferences prefs = requireContext().getSharedPreferences("AppAnalytics", Context.MODE_PRIVATE);
+        prefs.edit().putInt("gallery", prefs.getInt("gallery", 0) + 1).apply();
+
+
+
         View root = binding.getRoot();
 
         // Configurar spinner de sexo

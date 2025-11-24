@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/home">
 
     <fragment
-        android:id="@+id/nav_home"
+        android:id="@+id/home"
         android:name="com.example.cowdex.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
@@ -23,8 +23,13 @@
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/ubicacion"
-        android:name="com.example.cowdex.Ubicacion"
+        android:id="@+id/ubicacion2"
+        android:name="com.example.cowdex.ui.ubicacion.Ubicacion"
         android:label="fragment_ubicacion"
         tools:layout="@layout/fragment_ubicacion" />
+    <fragment
+        android:id="@+id/analytics"
+        android:name="com.example.cowdex.ui.Analytics.Analytics"
+        android:label="fragment_analytics"
+        tools:layout="@layout/fragment_analytics" />
 </navigation>
