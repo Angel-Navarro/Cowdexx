@@ -28,4 +28,11 @@ public interface CategoriaDao {
 
     @Query("SELECT * FROM categorias WHERE id = :categoriaId")
     LiveData<Categoria> getCategoriaById(int categoriaId);
+
+    // AGREGAR ESTOS MÉTODOS SÍNCRONOS PARA RESPALDOS
+    @Query("SELECT * FROM categorias ORDER BY nombre ASC")
+    List<Categoria> getAllCategoriasSync();
+
+    @Query("DELETE FROM categorias")
+    void deleteAll();
 }

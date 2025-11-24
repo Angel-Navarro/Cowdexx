@@ -32,4 +32,9 @@
         android:name="com.example.cowdex.ui.Analytics.Analytics"
         android:label="fragment_analytics"
         tools:layout="@layout/fragment_analytics" />
+    <fragment
+        android:id="@+id/respaldos"
+        android:name="com.example.cowdex.respaldos.respaldos"
+        android:label="fragment_respaldos"
+        tools:layout="@layout/fragment_respaldos" />
 </navigation>

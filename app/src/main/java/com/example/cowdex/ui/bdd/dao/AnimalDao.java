@@ -34,4 +34,11 @@ public interface AnimalDao {
 
     @Query("SELECT * FROM animales WHERE id = :animalId")
     LiveData<Animal> getAnimalById(int animalId);
+
+    // AGREGAR ESTOS MÉTODOS SÍNCRONOS PARA RESPALDOS
+    @Query("SELECT * FROM animales ORDER BY nombre ASC")
+    List<Animal> getAllAnimalsSync();
+
+    @Query("DELETE FROM animales")
+    void deleteAll();
 }

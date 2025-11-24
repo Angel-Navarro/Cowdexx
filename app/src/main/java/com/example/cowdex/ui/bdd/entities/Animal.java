@@ -132,4 +132,8 @@ public class Animal {
     public void setCategoriaId(int categoriaId) {
         this.categoriaId = categoriaId;
     }
+
+    public Animal() {
+    }
+
 }

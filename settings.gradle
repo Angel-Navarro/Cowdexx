@@ -5,6 +5,9 @@ pluginManagement {
                 includeGroupByRegex("com\\.android.*")
                 includeGroupByRegex("com\\.google.*")
                 includeGroupByRegex("androidx.*")
+                //Exp
+                maven { url 'https://jitpack.io' }
+
             }
         }
         mavenCentral()
@@ -16,6 +19,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        //Exp
+        maven { url 'https://jitpack.io' }
     }
 }
 

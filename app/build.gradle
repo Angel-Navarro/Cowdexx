@@ -91,4 +91,7 @@ dependencies {
     // Firebase Analytics
     implementation 'com.google.firebase:firebase-analytics'
 
+    // Respaldos e importaciones
+    implementation 'com.github.SUPERCILEX.poi-android:poi:3.17'
+
 }

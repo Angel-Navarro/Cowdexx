@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    tools:context=".respaldos.respaldos">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💾 Respaldos y Exportación"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:paddingBottom="16dp" />
+
+        <!-- Card Respaldar -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp"
+            android:radius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="☁️ Respaldar en la Nube"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guarda todos tus animales y categorías en Firebase"
+                    android:textSize="14sp"
+                    android:textColor="#666"
+                    android:paddingBottom="12dp" />
+
+                <Button
+                    android:id="@+id/btnRespaldar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Respaldar Ahora"
+                    android:backgroundTint="#4CAF50" />
+
+                <TextView
+                    android:id="@+id/tvUltimoRespaldo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Último respaldo: Nunca"
+                    android:textSize="12sp"
+                    android:textColor="#999"
+                    android:paddingTop="8dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card Restaurar -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp"
+            android:radius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📥 Restaurar desde la Nube"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recupera tus datos guardados en Firebase"
+                    android:textSize="14sp"
+                    android:textColor="#666"
+                    android:paddingBottom="12dp" />
+
+                <Button
+                    android:id="@+id/btnRestaurar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Restaurar Datos"
+                    android:backgroundTint="#2196F3" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card Exportar -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:elevation="4dp"
+            android:radius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📊 Exportar a Excel"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#333"
+                    android:paddingBottom="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genera un archivo Excel con todos tus animales"
+                    android:textSize="14sp"
+                    android:textColor="#666"
+                    android:paddingBottom="12dp" />
+
+                <Button
+                    android:id="@+id/btnExportar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Exportar a Excel"
+                    android:backgroundTint="#FF9800" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ProgressBar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleHorizontal" />
+
+        <TextView
+            android:id="@+id/tvEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="14sp"
+            android:textColor="#666"
+            android:gravity="center"
+            android:paddingTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

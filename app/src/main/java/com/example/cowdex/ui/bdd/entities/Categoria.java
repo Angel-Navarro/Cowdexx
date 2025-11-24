@@ -9,6 +9,9 @@ public class Categoria {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+
+    public Categoria() { }  // ← CONSTRUCTOR VACÍO
+
     private String nombre; // bovinos, caprinos, etc.
 
     public Categoria(String nombre) {

@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.home, R.id.nav_gallery, R.id.nav_slideshow, R.id.ubicacion2, R.id.analytics)
+                R.id.home, R.id.nav_gallery, R.id.nav_slideshow, R.id.ubicacion2, R.id.analytics, R.id.respaldos)
                 .setOpenableLayout(drawer)
                 .build();
         return NavigationUI.navigateUp(navController, appBarConfiguration) || super.onSupportNavigateUp();
